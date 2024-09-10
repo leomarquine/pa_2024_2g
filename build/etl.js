@@ -131,4 +131,3 @@ async function carregaEtapas() {
     }
     return (nome) => etapas[nome];
 }
-function parseNotas(value) { }

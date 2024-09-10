@@ -167,5 +167,3 @@ async function carregaEtapas() {
 
 	return (nome: string) => etapas[nome];
 }
-
-function parseNotas(value: string) {}
