@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const commands: string[] = ['./database/migrate.js'];
+const commands: string[] = ['./database/migrate.js', './etl.js'];
 
 const program = new Command();
 

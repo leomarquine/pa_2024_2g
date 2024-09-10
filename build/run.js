@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import dotenv from 'dotenv';
 dotenv.config();
-const commands = ['./database/migrate.js'];
+const commands = ['./database/migrate.js', './etl.js'];
 const program = new Command();
 program.configureHelp({
     sortSubcommands: true
