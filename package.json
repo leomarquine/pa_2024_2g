@@ -1,0 +1,22 @@
+{
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=22"
+	},
+	"scripts": {
+		"dev": "npx tsc --watch",
+		"build": "npx tsc",
+		"format": "prettier --write ."
+	},
+	"devDependencies": {
+		"@types/node": "^20.3.3",
+		"prettier": "^3.0.0",
+		"typescript": "^5.5.0"
+	},
+	"dependencies": {
+		"commander": "^12.1.0",
+		"dotenv": "^16.4.5",
+		"postgres": "^3.4.4"
+	}
+}
