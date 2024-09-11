@@ -5,7 +5,7 @@ import {
 	POSTGRES_PORT,
 	POSTGRES_USER
 } from '$env/static/private';
-import postgres from 'postgres';
+import postgres, { type PendingQuery, type Row } from 'postgres';
 
 const sql = postgres({
 	host: POSTGRES_HOST,
@@ -16,3 +16,5 @@ const sql = postgres({
 });
 
 export default sql;
+
+export type QueryFragment = PendingQuery<Row[]>;
