@@ -20,7 +20,7 @@ export type Materia = {
 	nome: string;
 };
 
-export type turmas = {
+export type Turma = {
 	id: number;
 	nome: string;
 	serie: string;
@@ -39,7 +39,7 @@ export type Etapa = {
 	nome: string;
 };
 
-export type notas = {
+export type Nota = {
 	id: number;
 	aluno_id: number;
 	materia_id: number;
