@@ -10,6 +10,7 @@ type Row = Aluno & {
 };
 
 export async function GET({ url }) {
+	const turma_id = url.searchParams.get('turma_id') ?? '1';
 	const materia_id = url.searchParams.get('materia_id') ?? '1';
 
 	const notas = await sql<Row[]>`
@@ -19,10 +20,13 @@ export async function GET({ url }) {
 				select json_agg(json_build_object('etapa', etapas.nome, 'nota', notas.nota))
 				from notas
 				inner join etapas on etapas.id = notas.etapa_id
-				where notas.aluno_id = alunos.id and notas.materia_id = ${materia_id}
+				where notas.aluno_id = alunos.id
+					and notas.materia_id = ${materia_id}
 
 			) as notas
 		from alunos
+		inner join aluno_turma on aluno_turma.aluno_id = alunos.id
+		where aluno_turma.turma_id = ${turma_id}
 	`;
 
 	const result = notas.map((d) => {
@@ -58,7 +62,7 @@ function calculaNotaFinal(data: Row['notas']) {
 
 function max(data: Row['notas'], a: string, b: string) {
 	const n1 = data.find((d) => d.etapa === a)?.nota ?? 0;
-	const n2 = data.find((d) => d.etapa === a)?.nota ?? 0;
+	const n2 = data.find((d) => d.etapa === b)?.nota ?? 0;
 
 	return Math.max(n1, n2);
 }
